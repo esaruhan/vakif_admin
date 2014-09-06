@@ -4,14 +4,14 @@ $no_visible_elements=true;
 
 			<div class="row-fluid">
 				<div class="span12 center login-header">
-					<h2>Welcome to Yiirisma</h2>
+					<h2>Süleymaniye Kültür Sanat Eğitim ve Sağlık Vakfı</h2>
 				</div><!--/span-->
 			</div><!--/row-->
 			
 			<div class="row-fluid">
 				<div class="well span5 center login-box">
 					<div class="alert alert-info">
-						Please login with your Username and Password.
+						Lütfen kullanıcı adı ve şifreniz ile giriniz.
 					</div>
 					<form class="form-horizontal" action="index.html" method="post">
 						<fieldset>

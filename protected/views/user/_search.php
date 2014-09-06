@@ -20,12 +20,27 @@
 		<?php echo $form->label($model,'username'); ?>
 		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>128)); ?>
 	</div>
+    
+        <div class="row">
+		<?php echo $form->label($model,'name'); ?>
+		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>128)); ?>
+	</div>
+    
+        <div class="row">
+		<?php echo $form->label($model,'surname'); ?>
+		<?php echo $form->textField($model,'surname',array('size'=>60,'maxlength'=>128)); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'email'); ?>
 		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
 	</div>
 
+        <div class="row">
+		<?php echo $form->label($model,'role'); ?>
+		<?php echo $form->textField($model,'role',array('size'=>60,'maxlength'=>128)); ?>
+	</div>
+    
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

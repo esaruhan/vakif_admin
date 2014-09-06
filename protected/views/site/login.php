@@ -1,4 +1,3 @@
-<link href="<?php echo Yii::app()->baseUrl?>/css/bootstrap-spacelab.css" rel='stylesheet'>
 <?php
 /* @var $this SiteController */
 /* @var $model LoginForm */
@@ -10,16 +9,13 @@ $this->breadcrumbs=array(
 );
 ?>
 
-
-
 <div class="container-fluid">
 	<div class="row-fluid">
 
 		<div class="row-fluid">
 			<div class="span12 center login-header">
-				<h2>Süleymaniye Kültür Sanat Eğitim ve Sağlık Vakfı</h2>
-                                <br>
-                                <h3>Yönetim Paneli Giriş Ekranı</h3>
+				 <br>
+                                <h3>Yönetici Girişi</h3>
 			</div>
 			<!--/span-->
 		</div>
@@ -27,7 +23,7 @@ $this->breadcrumbs=array(
 
 		<div class="row-fluid">
 			<div class="well span5 center login-box">
-				<div class="alert alert-info">Lütfen kullanıcı adı ve şifreniz ile giriş yapınız.</div>
+				<div class="alert alert-info">Kullanıcı adı ve şifreniz ile giriş yapınız.</div>
 				<?php $form=$this->beginWidget('CActiveForm', array(
 						'id'=>'login-form',
 						'enableClientValidation'=>true,

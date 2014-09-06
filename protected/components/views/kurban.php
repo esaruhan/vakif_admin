@@ -1,12 +1,12 @@
 		<?php 
                 
-                        $posts = Data::getBagisYapanlar();
+                        $posts = Data::getKurbanBagisiYapanlar();
                 
                 ?>	
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i> Bağış Yapanlar</h2>
+						<h2><i class="icon-user"></i> Kurban Bağış Yapanlar</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -19,8 +19,8 @@
 							  <tr>
 								  <th>Ad-Soyad</th>
 								  <th>Bağış Tarih</th>
-								  <th>Bağış Tipi</th>
-								  <th>Tekrar Süre</th>
+								  <th>Kurban Tipi</th>
+								  <th>Ödeme Tipi</th>
                                                                   <th>Telefon</th>
                                                                   <th>E-Mail</th>
                                                                   <th>Bağış Miktar ( TL )</th>
@@ -52,15 +52,13 @@
                                                                 <td class="center"><?php echo $bagis_tip_ismi ; ?></td>
 								<td class="center">
 									<?php 
-                                                                            if($bagis_tip == 1 && $bagis_odeme_sekli == 1){
-                                                                                    echo  $bagis_tekrar;
-                                                                            } else if($bagis_tip == 1 && $bagis_odeme_sekli == 0){
-                                                                                    echo  "Tek Sefer Burs";
-                                                                            } else {
-                                                                                    echo "-";
+                                                                            if( $kurban_odeme_sekli == 1){
+                                                                                    echo  $kurban_taksi." Taksit";
+                                                                            } else if( $bagis_odeme_sekli == 0){
+                                                                                    echo  "Tek Seferde Ödeme";
+                                                                            }  else {
+                                                                                    echo "HATA VAR";
                                                                             }
-                                                                                
-                                                                                
                                                                          ?>
 								</td>
                                                                 <td class="center"><?php  echo $telefon;?></td>

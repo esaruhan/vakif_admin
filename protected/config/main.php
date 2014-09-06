@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 		'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-		'name'=>'Yiirisma - free, premium quality, responsive, multiple skin YII admin template ',
+		'name'=>'Süleymaniye Kültür Sanat Eğitim ve Sağlık Vakfı',
 
 		// preloading 'log' component
 		'preload'=>array('log'),
@@ -49,21 +49,21 @@ return array(
 						),
 				),
 
-//					 'db'=>array(
-//				 'connectionString' => 'mysql:host=localhost;dbname=bagis',
-//						'emulatePrepare' => true,
-//						'username' => 'root',
-//						'password' => '1234',
-//						'charset' => 'utf8',
-//				), 
-////                                
-                                'db'=>array(
-				 'connectionString' => 'mysql:host=localhost;dbname=tarifeon_burs',
+					 'db'=>array(
+				 'connectionString' => 'mysql:host=localhost;dbname=bagis',
 						'emulatePrepare' => true,
-						'username' => 'tarifeon_burs',
-						'password' => 'Es20040432',
+						'username' => 'root',
+						'password' => '1234',
 						'charset' => 'utf8',
 				), 
+////                                
+//                                'db'=>array(
+//				 'connectionString' => 'mysql:host=localhost;dbname=tarifeon_burs',
+//						'emulatePrepare' => true,
+//						'username' => 'tarifeon_burs',
+//						'password' => 'Es20040432',
+//						'charset' => 'utf8',
+//				), 
 
 				'errorHandler'=>array(
 						// use 'site/error' action to display errors
@@ -90,6 +90,6 @@ array(
 		// using Yii::app()->params['paramName']
 		'params'=>array(
 				// this is used in contact page
-				'adminEmail'=>'webmaster@example.com',
+				'adminEmail'=>'esaruhan43@gmail.com',
 		),
 );

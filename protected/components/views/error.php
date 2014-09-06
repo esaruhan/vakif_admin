@@ -72,8 +72,8 @@
 		<p class="not-found">Not<br/>Found</p>
 		<div class="clear"></div>
 		<div class="content">
-			The page your are looking for is not found.
-			<br/><a href="index.html">Go Home</a> or<br/><form>Search<br/><input autofocus type="text" name="search" /></form>
+			Aradığınız Sayfa Bulunamadı.
+			<br/><a href="<?php echo Yii::app()->getBaseUrl(true)?>">Ana Sayfa</a> or<br/><form>Search<br/><input autofocus type="text" name="search" /></form>
 		</div>
 	</body>
 </html>

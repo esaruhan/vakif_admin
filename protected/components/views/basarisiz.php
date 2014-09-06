@@ -1,6 +1,6 @@
 		<?php 
                 
-                        $posts = Data::getBagisYapanlar();
+                        $posts = Data::getBasarisizBagisYapanlar();
                 
                 ?>	
 			<div class="row-fluid sortable">		
@@ -17,6 +17,7 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+                                                                  <th>Durum</th>
 								  <th>Ad-Soyad</th>
 								  <th>Bağış Tarih</th>
 								  <th>Bağış Tipi</th>
@@ -42,11 +43,16 @@
                                                           $kurban_odeme_sekli       = $record->kurban_odeme_sekli;
                                                           $kurban_taksi             = $record->kurban_taksit;
                                                           $bagis_zamani             = $record->bagis_zamani;
+                                                          $durum                    = $record->durum;
                                                           
                                                           $bagis_tip_ismi           = Data::getBagisTipi($bagis_tip);
                                                           $label                    = Data::getLabelData($bagis_tip);
+                                                          $durum_label              = Data::getDurum($durum);
                                                       ?>
 							<tr>
+                                                                <td>
+                                                                    <span class="label <?php echo $durum_label['label'];  ?>"><?php echo $durum_label['durum'];  ?></span>
+                                                                </td>
 								<td><?php echo $ad_soyad;?></td>
 								<td class="center"><?php echo $bagis_zamani ;?> </td>
                                                                 <td class="center"><?php echo $bagis_tip_ismi ; ?></td>

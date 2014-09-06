@@ -1,12 +1,12 @@
 		<?php 
                 
-                        $posts = Data::getBagisYapanlar();
+                        $posts = Data::getMesajAtanlar();
                 
                 ?>	
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-user"></i> Bağış Yapanlar</h2>
+						<h2><i class="icon-user"></i> Mesaj Atanlar </h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -17,13 +17,12 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+                                                              <th>Durum</th>
 								  <th>Ad-Soyad</th>
+                                                                  <th>Vakfa Mesaj</th>
 								  <th>Bağış Tarih</th>
-								  <th>Bağış Tipi</th>
-								  <th>Tekrar Süre</th>
                                                                   <th>Telefon</th>
                                                                   <th>E-Mail</th>
-                                                                  <th>Bağış Miktar ( TL )</th>
 								  <th>Bağış Tipi</th>
 							  </tr>
 						  </thead>   
@@ -36,40 +35,26 @@
                                                           $email                    = $record->email;
                                                           $telefon                  = $record->telefon;
                                                           $mesaj                    = $record->mesaj;
-                                                          $bagis_tutar              = $record->bagis_tutar;
-                                                          $bagis_odeme_sekli        = $record->bagis_odeme_sekli;
-                                                          $bagis_tekrar             = $record->bagis_tekrar;
-                                                          $kurban_odeme_sekli       = $record->kurban_odeme_sekli;
-                                                          $kurban_taksi             = $record->kurban_taksit;
                                                           $bagis_zamani             = $record->bagis_zamani;
-                                                          
+                                                          $durum                    = $record->durum;
                                                           $bagis_tip_ismi           = Data::getBagisTipi($bagis_tip);
                                                           $label                    = Data::getLabelData($bagis_tip);
+                                                          $durum_label              = Data::getDurum($durum);
                                                       ?>
-							<tr>
+                                                        <?php if(!empty($mesaj)) { ?>
+                                                                <td>
+                                                                    <span class="label <?php echo $durum_label['label'];  ?>"><?php echo $durum_label['durum'];  ?></span>
+                                                                </td>
 								<td><?php echo $ad_soyad;?></td>
+                                                                <td><?php echo $mesaj;?></td>
 								<td class="center"><?php echo $bagis_zamani ;?> </td>
-                                                                <td class="center"><?php echo $bagis_tip_ismi ; ?></td>
-								<td class="center">
-									<?php 
-                                                                            if($bagis_tip == 1 && $bagis_odeme_sekli == 1){
-                                                                                    echo  $bagis_tekrar;
-                                                                            } else if($bagis_tip == 1 && $bagis_odeme_sekli == 0){
-                                                                                    echo  "Tek Sefer Burs";
-                                                                            } else {
-                                                                                    echo "-";
-                                                                            }
-                                                                                
-                                                                                
-                                                                         ?>
-								</td>
                                                                 <td class="center"><?php  echo $telefon;?></td>
                                                                 <td class="center"><?php  echo $email;?></td>
-                                                                <td class="center"><?php echo $bagis_tutar ?></td>
                                                                 <td class="center">
                                                                     <span class="label <?php echo $label['label'];  ?>"><?php echo $label['bagis'];  ?></span>
                                                                 </td>
 							</tr>
+                                                      <?php } ?>
                                                       <?php } ?>
 						  </tbody>
 					  </table>            

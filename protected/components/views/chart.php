@@ -1,66 +1,44 @@
-
+<!--
 			<div class="row-fluid sortable">
 				
 				<div class="box">
 					<div class="box-header well">
-						<h2><i class="icon-list-alt"></i> Chart with points</h2>
+						<h2><i class="icon-list-alt"></i> Burs Grafiği ( Ay / Burs Miktarı )</h2>
 						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="<?php echo Yii::app()->createUrl('site/iletisimliste')?>" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
 					<div class="box-content">
-						<div id="sincos"  class="center" style="height:300px" ></div>
-						<p id="hoverdata">Mouse position at (<span id="x">0</span>, <span id="y">0</span>). <span id="clickdata"></span></p>
-					</div>
+                                            <?php  
+                                                        
+//                                                    $this->Widget('ext.highcharts.HighchartsWidget', array(
+//                                                       'options'=>array(
+//                                                          'title' => array('text' => 'Fruit Consumption'),
+//                                                          'xAxis' => array(
+//                                                             'categories' => array('Apples', 'Bananas', 'Oranges')
+//                                                          ),
+//                                                          'yAxis' => array(
+//                                                             'title' => array('text' => 'Fruit eaten')
+//                                                          ),
+//                                                          'series' => array(
+//                                                             array( 'data' => array(1, 0, 4)),
+//                                                          )
+//                                                       )
+//                                                    ));
+                                            
+                                            ?>
+                                       </div>
 				</div>
 				
-				<div class="box">
-					<div class="box-header well">
-						<h2><i class="icon-list-alt"></i> Flot</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<div id="flotchart" class="center" style="height:300px"></div>
-					</div>
-				</div>
-				
-				<div class="box">
-					<div class="box-header well">
-						<h2><i class="icon-list-alt"></i> Stack Example</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						 <div id="stackchart" class="center" style="height:300px;"></div>
 
-						<p class="stackControls center">
-							<input class="btn" type="button" value="With stacking">
-							<input class="btn" type="button" value="Without stacking">
-						</p>
-
-						<p class="graphControls center">
-							<input class="btn btn-primary" type="button" value="Bars">
-							<input class="btn btn-primary" type="button" value="Lines">
-							<input class="btn btn-primary" type="button" value="Lines with steps">
-						</p>
-					</div>
-				</div>
-
-			</div><!--/row-->
+			</div>/row
 			
 			<div class="row-fluid sortable">
 				<div class="box span4">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list-alt"></i> Pie</h2>
+						<h2><i class="icon-list-alt"></i> Bağışların Dağılımı</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -74,7 +52,7 @@
 				
 				<div class="box span4">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list-alt"></i> Realtime</h2>
+						<h2><i class="icon-list-alt"></i> Anlık Trafik</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -90,7 +68,7 @@
 					
 				<div class="box span4">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-list-alt"></i> Donut</h2>
+						<h2><i class="icon-list-alt"></i> Bursların Dağılımı</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -102,6 +80,6 @@
 					</div>
 				</div>
 			</div>  
-		</div><!--/row-->
+		</div>/row
 		
-
+-->

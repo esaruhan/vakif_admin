@@ -13,9 +13,9 @@
 					data-target=".top-nav.nav-collapse,.sidebar-nav.nav-collapse"> <span
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
-				</a> <a class="brand" href="<?php echo Yii::app()->baseUrl?>"> <img
+				</a> <a class="brand" href="<?php echo Yii::app()->getBaseUrl(true); ?>"> <img
 					alt="Yiirisma Logo"
-					src="<?php echo Yii::app()->baseUrl?>/img/logo20.png" /> <span>Yiirisma</span>
+					src="<?php echo Yii::app()->getBaseUrl(true); ?>/img/logo20.png" /> <span>Yiirisma</span>
 				</a>
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container">
@@ -24,15 +24,15 @@
 							Skin</span> <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" id="themes">
-						<li><a data-value="classic" href="#"><i class="icon-blank"></i>
+						<li><a data-value="classic" href="#" ><i class="icon-blank"></i>
 								Classic</a></li>
-						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i>
+						<li><a data-value="cerulean" href="#" ><i class="icon-blank"></i>
 								Cerulean</a></li>
 						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i>
 								Cyborg</a></li>
 						<li><a data-value="redy" href="#"><i class="icon-blank"></i> Redy</a>
 						</li>
-						<li><a data-value="journal" href="#"><i class="icon-blank"></i>
+						<li><a data-value="journal" href="#"><i class="icon-blank" ></i>
 								Journal</a></li>
 						<li><a data-value="simplex" href="#"><i class="icon-blank"></i>
 								Simplex</a></li>
@@ -63,13 +63,13 @@
 
 				<div class="top-nav nav-collapse">
 					<ul class="nav">
-						<li><a href="#">Visit Site</a></li>
+						<li><a href="http://suleymaniyevakfi.com.tr">Vakıf Sitesini Ziyaret Et</a></li>
 						<li>
-							<form class="navbar-search pull-left"
+<!--							<form class="navbar-search pull-left"
 								action="<?php echo Yii::app()->createUrl('/site/search')?>">
 								<input placeholder="Search" class="search-query span2"
 									name="query" type="text">
-							</form>
+							</form>-->
 						</li>
 					</ul>
 				</div>
@@ -122,7 +122,7 @@
 		<hr>
 		<div class="modal hide fade" id="myModal">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">�</button>
+				<button type="button" class="close" data-dismiss="modal">�</button>
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">
@@ -134,13 +134,14 @@
 			</div>
 		</div>
 		<footer>
+			<footer>
 			<p class="pull-left">
-				<a href="http://rkchaulagain.com.np" target="_blank">Ramkrishna
-					Chaulagain</a> 2012
+				<a href="http://www.suleymaniyevakfi.com.tr" target="_blank">Süleymaniye, Kültür Sanat Vakfı </a> @2014
 			</p>
 			<p class="pull-right">
-				Powered by: <a href="https://github.com/Chaulagain-Softwares/yiirisma">Yiirisma</a>
+				Powered by: <a href="http://about.me/esaruhan" target="_blank">Ertuğrul Saruhan</a>
 			</p>
+		</footer>
 		</footer>
 	</div>
 	<!--/.fluid-container-->

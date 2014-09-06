@@ -74,7 +74,7 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" id="themes">
-						<li><a data-value="classic" href="#"><i class="icon-blank"></i> Classic</a></li>
+						<li><a data-value="classi" href="#"><i class="icon-blank"></i> Classic</a></li>
 						<li><a data-value="cerulean" href="#"><i class="icon-blank"></i> Cerulean</a></li>
 						<li><a data-value="cyborg" href="#"><i class="icon-blank"></i> Cyborg</a></li>
 						<li><a data-value="redy" href="#"><i class="icon-blank"></i> Redy</a></li>

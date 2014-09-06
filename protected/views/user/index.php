@@ -7,10 +7,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>'Kullanıcı oluştur', 'url'=>array('create')),
+	array('label'=>'Kullanıcıları Yönet', 'url'=>array('admin')),
 );
-$this->title = 'Users';
+$this->title = 'Kullanıcılar Listesi';
 ?>
 
 <!-- <h1>Users</h1> -->

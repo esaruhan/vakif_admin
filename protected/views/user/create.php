@@ -8,10 +8,10 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>'Kullanıcıları Listele', 'url'=>array('index')),
+	array('label'=>'Kullanıcıları Yönet', 'url'=>array('admin')),
 );
-$this->title = 'Create User';
+$this->title = 'Kullanıcı Oluştur';
 ?>
 
 <!-- <h1>Create User</h1> -->

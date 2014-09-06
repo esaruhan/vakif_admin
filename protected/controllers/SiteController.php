@@ -103,9 +103,33 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render( 'login' , array('model'=>$model));
 	}
 
+        public function actionIletisimliste(){
+            
+            $this->render('iletisimliste');
+        }
+        public function actionOku($id){
+            
+            $model = $this->loadContact($id);
+
+            $model->okundu = 1;
+            $model->save();
+            
+            $this->render('oku',array(
+			'model'=>$model,
+            ));
+            
+        }
+        
+        public function loadContact($id)
+	{
+		$model=  ContactRecord::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */

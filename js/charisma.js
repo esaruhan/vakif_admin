@@ -2,6 +2,10 @@ function getBaseUrl() {
 	var l = window.location;
     return base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
 }
+function getSiteBaseUrl() {
+	var l = window.location;
+    return base_url = l.protocol + "//" + l.host + "/" ;
+}
 $(document).ready(function(){
 	//themes, change CSS with JS
 	//default theme(CSS) is cerulean, change it if needed
@@ -23,7 +27,7 @@ $(document).ready(function(){
 	function switch_theme(theme_name)
 	{
                 
-		$('#bs-css').attr('href',getBaseUrl()+'/css/bootstrap-'+theme_name+'.css');
+		$('#bs-css').attr('href',getSiteBaseUrl()+'/css/bootstrap-'+theme_name+'.css');
 	}
 	
 	//ajax menu checkbox
@@ -156,7 +160,7 @@ function docReady(){
 
 	//file manager
 	var elf = $('.file-manager').elfinder({
-		url : getBaseUrl()+'/misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
+		url : getSiteBaseUrl()+'/misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
 	}).elfinder('instance');
 
 	//iOS / iPhone style toggle switch
@@ -169,8 +173,8 @@ function docReady(){
 
 	//uploadify - multiple uploads
 	$('#file_upload').uploadify({
-		'swf'      : getBaseUrl()+'/misc/uploadify.swf',
-		'uploader' : getBaseUrl()+'/misc/uploadify.php'
+		'swf'      : getSiteBaseUrl()+'/misc/uploadify.swf',
+		'uploader' : getSiteBaseUrl()+'/misc/uploadify.php'
 		// Put your options here
 	});
 
