@@ -39,7 +39,10 @@
 								class="icon-envelope"></i><span class="hidden-tablet">
 									SMS Gönderme</span> </a>
                                                 </li>     
-                                                
+                                                <li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/kurbantakip')?>"><i
+								class="icon-align-justify"></i><span class="hidden-tablet"> Kurban Takip</span>
+						</a>
+                                               </li>
 						<li><a class="ajax-link" href="<?php echo Yii::app()->createUrl('site/index/view/chart')?>"><i
 								class="icon-list-alt"></i><span class="hidden-tablet"> Grafikler</span>
 						</a></li>

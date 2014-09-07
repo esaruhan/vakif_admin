@@ -20,7 +20,7 @@
 								  <th>Ad-Soyad</th>
 								  <th>Bağış Tarih</th>
 								  <th>Bağış Tipi</th>
-								  <th>Tekrar Süre</th>
+								  <th>Tekrar Süre/Taksit</th>
                                                                   <th>Telefon</th>
                                                                   <th>E-Mail</th>
                                                                   <th>Bağış Miktar ( TL )</th>
@@ -53,12 +53,20 @@
 								<td class="center">
 									<?php 
                                                                             if($bagis_tip == 1 && $bagis_odeme_sekli == 1){
-                                                                                    echo  $bagis_tekrar;
+                                                                                    echo  $bagis_tekrar. " Ay";
                                                                             } else if($bagis_tip == 1 && $bagis_odeme_sekli == 0){
                                                                                     echo  "Tek Sefer Burs";
+                                                                            } else if($bagis_tip >= 4 ) {
+                                                                                    if($kurban_odeme_sekli == 0){
+                                                                                        echo "Tek Sefer Ödeme";
+                                                                                    } else {
+                                                                                        echo $kurban_taksi.' Taksit';
+                                                                                    }
                                                                             } else {
                                                                                     echo "-";
-                                                                            }
+                                                                            } 
+                                                                            
+                                                                            
                                                                                 
                                                                                 
                                                                          ?>

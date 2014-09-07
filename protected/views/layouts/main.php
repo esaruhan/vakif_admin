@@ -15,7 +15,7 @@
 					class="icon-bar"></span>
 				</a> <a class="brand" href="<?php echo Yii::app()->getBaseUrl(true); ?>"> <img
 					alt="Yiirisma Logo"
-					src="<?php echo Yii::app()->getBaseUrl(true); ?>/img/logo20.png" /> <span>Yiirisma</span>
+					src="<?php echo Yii::app()->getBaseUrl(true); ?>/img/logo20.png" /> <span style="font-size:0.60em">Süleymaniye</span>
 				</a>
 				<!-- theme selector starts -->
 				<div class="btn-group pull-right theme-container">

@@ -117,6 +117,15 @@ class Data {
         return $posts;        
     }
     
+     public static function getKurbanDurum($durum){
+        
+        if($durum==1){
+            return array ("label" => "label-success" , "durum"=>"KESİLDİ");
+        } else if($durum ==2 ){
+            return array ("label" => "label-important" , "durum"=>"KESİLECEK");
+        }
+        
+    }
     
     /*
      * SMS ile ilgili durumlar buradan..

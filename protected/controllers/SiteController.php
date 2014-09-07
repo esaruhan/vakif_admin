@@ -144,4 +144,48 @@ class SiteController extends Controller
 		else
 		$this->render('search');
 	}
+        
+        public function actionKurbantakip(){
+            
+            $posts = Data::getKurbanBagisiYapanlar();
+                
+            $this->render('kurbantakip',array('posts'=>$posts));    	
+        }
+        
+        public function actionKesim($id){
+            
+            $model = $this->loadBagisRecord($id);
+            
+            $this->render('kesim',array(
+			'model'=>$model,
+            ));
+        }
+        public function actionKesimyap($id,$tip){
+            $model = $this->loadBagisRecord($id);
+            
+            if($tip == 'sms'){
+                if(Util::checkVariableValidity($model->telefon) == false){
+                          Yii::app()->user->setFlash('error', 'Bağışcı telefon bilgisini vermemiştir. SMS gönderemezsiniz. ');
+                }
+            } else if($tip == 'mail' ){
+                if(Util::checkVariableValidity($model->email) == false){
+                          Yii::app()->user->setFlash('error', 'Bağışcı e-posta bilgisi  vermemiştir. Mail gönderemezsiniz. ');
+                }
+            }
+            
+            $this->render('kesimyap',array(
+			'model'=>$model,
+                        'tip'=>$tip
+            ));
+        }
+                
+           public function loadBagisRecord($id)
+	{
+		$model= BagisRecord::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'Böyle bir Bağışçı Bulunamadı.');
+		return $model;
+	}
+        
+        
 }
