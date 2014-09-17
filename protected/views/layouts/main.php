@@ -126,12 +126,14 @@
 				<h3>Settings</h3>
 			</div>
 			<div class="modal-body">
-				<p>Here settings can be configured...</p>
+				<p>Here settings can be configured..Test 2..</p>
+                                 <img src="/img/4_Screen Shot 2014-07-14 at 23.09.17.png" />
+			
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Close</a> <a href="#"
 					class="btn btn-primary">Save changes</a>
-			</div>
+                      </div>
 		</div>
 		<footer>
 			<footer>

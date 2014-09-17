@@ -23,8 +23,11 @@
 								  <th>Ödeme Tipi</th>
                                                                   <th>Telefon</th>
                                                                   <th>E-Mail</th>
+                                                                  <th>Kurban Adet</th>
                                                                   <th>Bağış Miktar ( TL )</th>
-								  <th>Bağış Tipi</th>
+								  <th>Kesim Durumu</th>
+                                                                  <th>Kesildiği Tarih</th>
+                                                                  <th>Resim</th>
 							  </tr>
 						  </thead>   
 						  <tbody>
@@ -43,8 +46,13 @@
                                                           $kurban_taksi             = $record->kurban_taksit;
                                                           $bagis_zamani             = $record->bagis_zamani;
                                                           
+                                                          $kurban_kesim_durum       = $record->kurban_kesim_durum;
+                                                          $kurban_adet              = $record->kurban_adet;
+                                                          $kurban_kesim_tarih       = $record->kurban_kesim_tarih;
+                                                          $kurban_resim_url         = $record->kurban_resim_url;
+                                                          
                                                           $bagis_tip_ismi           = Data::getBagisTipi($bagis_tip);
-                                                          $label                    = Data::getLabelData($bagis_tip);
+                                                          $label                    = Data::getKurbanDurum($kurban_kesim_durum);
                                                       ?>
 							<tr>
 								<td><?php echo $ad_soyad;?></td>
@@ -63,10 +71,13 @@
 								</td>
                                                                 <td class="center"><?php  echo $telefon;?></td>
                                                                 <td class="center"><?php  echo $email;?></td>
+                                                                <td class="center"><?php  echo $kurban_adet;?></td>
                                                                 <td class="center"><?php echo $bagis_tutar ?></td>
                                                                 <td class="center">
-                                                                    <span class="label <?php echo $label['label'];  ?>"><?php echo $label['bagis'];  ?></span>
+                                                                    <span class="label <?php echo $label['label'];  ?>"><?php echo $label['durum'];  ?></span>
                                                                 </td>
+                                                                <td class="center"><?php echo $kurban_kesim_tarih ?></td>
+                                                                <td class="center"><?php echo $kurban_resim_url ?></td>
 							</tr>
                                                       <?php } ?>
 						  </tbody>

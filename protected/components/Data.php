@@ -46,6 +46,12 @@ class Data {
         $posts=  BagisRecord::model()->findAll($criteria);
         return $posts;
     }  
+    public static function getKurbanBagisiYapanlarveKesimOlmayanlar(){
+        $criteria=new CDbCriteria;
+        $criteria->condition="durum=1 and bagis_tip >= 4 and kurban_kesim_durum = 2 ORDER BY bagis_zamani DESC";
+        $posts=  BagisRecord::model()->findAll($criteria);
+        return $posts;
+    }  
     
     public static function getBasarisizBagisYapanlar(){
         $criteria=new CDbCriteria;
@@ -54,6 +60,14 @@ class Data {
         return $posts;        
         
     }
+    
+    public static function getYurtdisiKurbanBagisiYapanlar(){
+        $criteria=new CDbCriteria;
+        $criteria->condition = "durum=1  ORDER BY bagis_zamani DESC";
+        $posts= KurbanRecord::model()->findAll($criteria);
+        return $posts;
+    }  
+    
     public static function getBagisTipi($bagis_tip){
         
          $bagis_tipleri = array('1'=>'Burs','2'=>'Serbest','3'=>'Zekat','4'=>'Kurban','5'=>'Akika Kurbanı','6'=>'Adak Kurbanı','7'=>'Şükür Kurbanı');
@@ -127,6 +141,18 @@ class Data {
         
     }
     
+    public static function  getTelefonAramaDurum($telefon){
+        if(isset($telefon)&&empty($telefon)!=1){
+            return "Ara 0".$telefon;
+        } else {
+            return "-";
+        }
+        
+    }
+
+
+
+
     /*
      * SMS ile ilgili durumlar buradan..
      */

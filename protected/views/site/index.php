@@ -97,7 +97,17 @@ else:
                 <div><?php echo StasticCounts::getToplamVakifIletisimGecenler();?> Adet</div> 
                 <span class="notification red"><?php  echo StasticCounts::getBugunVakifIletisimGecenler();?> Adet</span>
     </a>
+      <a data-rel="tooltip" title=" <?php  echo StasticCounts::getBugunYurtdisiKurbanBagisiYapanlar();?> Bugün Yapılan Yurtdışı Kurban."
+		class="well span3 top-block" href="#"> <span
+		class="icon32 icon-color icon-globe"></span>
+		<div>Yurtdışı Kurban Bağışı</div>
+                <div><?php echo StasticCounts::getToplamYurtdisiKurbanBagisiYapanlar();?> Adet</div> 
+                <span class="notification red"><?php  echo StasticCounts::getBugunYurtdisiKurbanBagisiYapanlar();?> Adet</span>
+    </a>
     
+</div>
+<div class="sortable row-fluid">
+   
 </div>
 
 <?php endif;?>

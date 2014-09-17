@@ -25,6 +25,7 @@
                                                                   <th>Telefon</th>
                                                                   <th>E-Mail</th>
                                                                   <th>Bağış Miktar ( TL )</th>
+                                                                  <th>Hata Mesajı</th>
 								  <th>Bağış Tipi</th>
 							  </tr>
 						  </thead>   
@@ -35,7 +36,7 @@
                                                           $ad_soyad                 = $record->ad_soyad;
                                                           $bagis_tip                = $record->bagis_tip;
                                                           $email                    = $record->email;
-                                                          $telefon                  = $record->telefon;
+                                                          $telefon                  = '0'.$record->telefon;
                                                           $mesaj                    = $record->mesaj;
                                                           $bagis_tutar              = $record->bagis_tutar;
                                                           $bagis_odeme_sekli        = $record->bagis_odeme_sekli;
@@ -44,10 +45,12 @@
                                                           $kurban_taksi             = $record->kurban_taksit;
                                                           $bagis_zamani             = $record->bagis_zamani;
                                                           $durum                    = $record->durum;
+                                                          $hata_mesaj               = $record->hata_mesaj;
                                                           
                                                           $bagis_tip_ismi           = Data::getBagisTipi($bagis_tip);
                                                           $label                    = Data::getLabelData($bagis_tip);
                                                           $durum_label              = Data::getDurum($durum);
+                                                          $telefon_arama            = Data::getTelefonAramaDurum($record->telefon);
                                                       ?>
 							<tr>
                                                                 <td>
@@ -69,9 +72,10 @@
                                                                                 
                                                                          ?>
 								</td>
-                                                                <td class="center"><?php  echo $telefon;?></td>
+                                                                <td class="center"><?php  echo "<a href='tel:$telefon'>$telefon_arama</a>";?></td>
                                                                 <td class="center"><?php  echo $email;?></td>
                                                                 <td class="center"><?php echo $bagis_tutar ?></td>
+                                                                <td class="center"><?php echo $hata_mesaj ?></td>
                                                                 <td class="center">
                                                                     <span class="label <?php echo $label['label'];  ?>"><?php echo $label['bagis'];  ?></span>
                                                                 </td>

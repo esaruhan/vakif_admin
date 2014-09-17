@@ -147,7 +147,7 @@ class SiteController extends Controller
         
         public function actionKurbantakip(){
             
-            $posts = Data::getKurbanBagisiYapanlar();
+            $posts = Data::getKurbanBagisiYapanlarveKesimOlmayanlar();
                 
             $this->render('kurbantakip',array('posts'=>$posts));    	
         }
@@ -178,6 +178,22 @@ class SiteController extends Controller
                         'tip'=>$tip
             ));
         }
+        
+        public function actionMailgonderme($id,$tip){
+            $model = $this->loadContactRecord($id);
+            
+            if( $model == null){
+                  Yii::app()->user->setFlash('error', 'İletişime geçen kişi bulunamamıştır. Bir hata oluşmuş olabilir.');
+          
+            } else if(Util::checkVariableValidity($model->mail) == false){
+                  Yii::app()->user->setFlash('error', 'İletişime yazan kişinin e-posta bilgisi bulunamamıştır. Mail gönderemezsiniz. ');
+            } 
+            
+            $this->render('mailgonder',array(
+			'model'=>$model,
+                        'tip'=>$tip
+            ));
+        }
                 
            public function loadBagisRecord($id)
 	{
@@ -186,6 +202,174 @@ class SiteController extends Controller
 			throw new CHttpException(404,'Böyle bir Bağışçı Bulunamadı.');
 		return $model;
 	}
+          public function loadContactRecord($id)
+	{
+		$model= ContactRecord::model()->findByPk($id);
+		
+                if($model===null)
+			return null;
+                
+		return $model;
+	}
+        public function actionMailgonder($id){
+                date_default_timezone_set('Europe/Istanbul');
+                $model    = $this->loadBagisRecord($id);
+                $sms_message  = Util::createSMSMessage($model->ad_soyad, $model->kurban_adet, Data::getBagisTipi($model->bagis_tip));
+                $message  = $_POST['message'];
+                $telefon  = $model->telefon;
+                $smsDurum = 0;
+                $image    = "";
+                $url_mail = "";
+                $url_canli= "";
+                
+                $image = CUploadedFile::getInstanceByName('camera_tek');
+                
+//                $url_test =  '/Users/ertugrulsaruhan/Sites/mobile-yiirisma/img/'.$model->id.'_'.$model->image->getName();
+                
+                
+                if(!is_null($image) && is_object($image)){
+                    $uniqueId = Util::generateRandomId();
+                    $url_canli = '/home/tarifeon/public_html/kurban_admin_yiirisma/img/kurban_images/'.$model->id.'_'.date('Y-m-d').'_'.$uniqueId.'.'.$image->getExtensionName();
+                    $url_mail =  '/img/kurban_images/'.$model->id.'_'.date('Y-m-d').'_'.$uniqueId.'.'.$image->getExtensionName();
+                    
+                    if(file_exists($url_canli)==true){
+                        unlink($url_canli);
+                    }
+
+                    $image->saveAs($url_canli);
+                    $model->kurban_resim_url    = $url_canli;
+                    
+                } else {
+                     $url_canli = null;
+                     $url_mail  = null;
+                }
+              
+                if (( isset($telefon) == 1) && ( empty($telefon) != 1)) {
+                        $smsSend = $this->smsGonder($model->id, $sms_message, $telefon);
+                        $smsDurum = $smsSend->durum;
+                }
+                
+                $mail = new YiiMailer();
+                $mail->setData(array('message' => $message, 'name' => $model->ad_soyad,'kurban_image'=>$url_mail));
+                $mail->setLayout('vakif');
+                $mail->setFrom('info@suleymaniyevakfi.com.tr', 'Süleymaniye Vakfı');
+                $mail->setTo($model->email);
+                $mail->setSubject('Kurbanınız Kesilmiştir');
+                
+                if($url_canli != null)
+                    $mail->setAttachment($url_canli);
+                
+                if ($mail->send()) {
+                        $model->kurban_kesim_tarih  = date('Y-m-d H:i:s');
+                        $model->kurban_kesim_durum  = 1;
+                        if($model->save()){
+                            if($smsDurum == 1){
+                                 Yii::app()->user->setFlash('contact','Mail ve SMS gönderilmiştir. Durum güncellenmiştir.');
+                            } else {
+                                 Yii::app()->user->setFlash('contact','Mail gönderilmiştir. Durum güncellenmiştir.');
+                            }
+                        } else {
+                             if($smsDurum == 1){
+                                 Yii::app()->user->setFlash('error','Mail ve SMS gönderilmiştir. Fakat durum bilgisi güncellenememiştir.');
+                            } else {
+                                 Yii::app()->user->setFlash('error','Mail gönderilmiştir. Fakat durum bilgisi güncellenememiştir.');
+                            }
+                        }
+                } else {
+                    if($smsDurum == 1){
+                        Yii::app()->user->setFlash('error','Mail  gönderiminde hata oluşmuştur Fakat SMS gönderilmiştir. Hata ->'.$mail->getError());
+                    } else {
+                        Yii::app()->user->setFlash('error','Mail ve SMS gönderiminde hata oluşmuştur. Hata ->'.$mail->getError());
+                    }
+                }
+
+                $this->render('kesimresult');
+                
+        }
         
+        public function actionIletisimmailnonder($id){
+             date_default_timezone_set('Europe/Istanbul');
+             $model    = $this->loadContactRecord($id);
+             $message  = $_POST['message'];
+             
+             if($model == null){
+                  Yii::app()->user->setFlash('error','Iletişime geçen kişiye ait bilgi bulunamamıştır.Bu bir hata olabilir veya kayıt silinmiş olabilir.');
+             } else {
+                 
+                if( isset($message) == 1 && empty($message) != 1 ){
+
+                     $mail = new YiiMailer();
+                     $mail->setData(array('message' => $message, 'name' => $model->ad_soyad,'gelenmesaj'=>$model->mesaj));
+                     $mail->setLayout('vakifmail');
+                     $mail->setFrom('info@suleymaniyevakfi.com.tr', 'Süleymaniye Vakfı');
+                     $mail->setTo($model->mail);
+                     $mail->setSubject('Vakfa ilettiğiniz Mesaj');
+                     if ($mail->send()) {
+                        Yii::app()->user->setFlash('contact','Mail başarıyla gönderilmiştir');
+                     } else {
+                        Yii::app()->user->setFlash('error','Mail gönderilememiştir. Bir hata oluştu.');
+                     }
+                } else  {
+                   Yii::app()->user->setFlash('error','Mesaj içeriği boş olamaz.');
+                }     
+             }   
+             
+            $this->render('kesimresult');
+        }
+
+        public function actionSmsgonder($id){
+            
+              date_default_timezone_set('Europe/Istanbul');
         
+              $model    = $this->loadBagisRecord($id);
+              $message  = $_POST['message'];
+              $telefon  = $model->telefon;
+              
+              if(isset($message)&&!empty($message)){
+                  
+                   if (( isset($telefon) == 1) && ( empty($telefon) != 1)) {
+                        
+                        $smsSend = $this->smsGonder($model->id, $message, $telefon);
+                        
+                        if( $smsSend->durum == 1  ){
+                            
+                            // Kurban durumlarını güncelliyoruz, kesildi olarak çıkması için.
+                            $model->kurban_kesim_tarih  = date('Y-m-d H:i:s');
+                            $model->kurban_kesim_durum  = 1;
+                            
+                            if($model->save()){
+                                Yii::app()->user->setFlash('contact','SMS gönderilmiştir. Durum güncellenmiştir.');
+                            } else {
+                                Yii::app()->user->setFlash('error','SMS gönderilmiştir. Fakat durum güncellenememiştir');
+                            }
+                            
+                        }  else {
+                             $model->kurban_kesim_tarih  = date('Y-m-d H:i:s');
+                             $model->kurban_kesim_durum  = 1;
+                             Yii::app()->user->setFlash('error','SMS gönderilememiş ve durum bilgisi güncellenememiştir. Lütfen webmaster@suleymaniyevakfi.com.tr adresine bilgilendirme maili atınız.');
+                        }
+                        
+                    } else {
+                           Yii::app()->user->setFlash('error','Bağışçı telefon numarası vermemiştir. SMS gönderimi yapılamaz.');
+                    }
+                  
+              } else {
+                   Yii::app()->user->setFlash('error','Mesaj içeriği boş olamaz. Lütfen mesajı olduğu gibi bırakınız yada düzelterek gönderiniz.');
+              }
+              
+              $this->render('kesimresult');
+               
+        }
+        
+        public function smsGonder($id,$message,$telefon){
+            $smsSend = new SMSSend();
+            $smsSend->message = $message;
+            $smsSend->setMesajBilgileri($telefon);
+            $smsSend->sendMessage();
+            $smsSend->reponseRead();
+            $smsSend->bagis_burs_id = $id;
+            $smsSend->numara = $telefon;
+            $smsSend->saveToDatabase();
+            return $smsSend;
+        }
 }

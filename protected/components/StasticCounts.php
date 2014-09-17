@@ -186,5 +186,27 @@ Class StasticCounts {
             $user = $record->count($criteria);
             return $user;        
         }
+        
+          /*
+          * Yurtdışı kurban sayısı
+          */
+        public static function getBugunYurtdisiKurbanBagisiYapanlar(){
+            $record = new KurbanRecord();
+            $criteria = new CDbCriteria;     
+            $criteria->condition    = " DATE(bagis_zamani) = DATE(NOW()) AND durum = 1";
+            $user = $record->count($criteria);
+            return $user;        
+        }
+          /*
+          * Toplam Yurtdışı Kurban Bağışı Yapanlar
+          */
+         public static function getToplamYurtdisiKurbanBagisiYapanlar(){
+            $record = new KurbanRecord();
+            $criteria = new CDbCriteria;     
+            $criteria->condition    = " durum = 2";
+            $user = $record->count($criteria);
+            return $user;        
+        }
+        
 
 }

@@ -16,6 +16,7 @@ return array(
 		'import'=>array(
 				'application.models.*',
 				'application.components.*',
+                                'ext.YiiMailer.YiiMailer',
 		),
 
 		'modules'=>array(
@@ -90,6 +91,8 @@ array(
 		// using Yii::app()->params['paramName']
 		'params'=>array(
 				// this is used in contact page
-				'adminEmail'=>'esaruhan43@gmail.com',
+				'adminEmail'=>'info@suleymaniyevakfi.com.tr',
+                                'uploadPath'=>dirname(__FILE__).'/../../kurban_images/',
+                                'uploadUrl'=>'/kurban_images',
 		),
 );

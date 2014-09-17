@@ -40,17 +40,26 @@ $this->breadcrumbs=array(
                     'value'=>Data::getBagisTipi($model->bagis_tip)
                 ),
                 'bagis_zamani',
-                array(
-                    'label'=>'Mail Gönder',
-                    'type'=>'raw',
-                    'value'=>'<a href="'.Yii::app()->createUrl('site/kesimyap',array('id'=>$id,'tip'=>'mail')).'">'.'Resimli/Resimsiz Mail Gönder'.'</a>'
-                ),
-                array(
-                    'label'=>'SMS Gönder',
-                    'type'=>'raw',
-                    'value'=>'<a href="'.Yii::app()->createUrl('site/kesimyap',array('id'=>$id,'tip'=>'sms')).'">'.'SMS Gönder'.'</a>'
-                ),
+                'kurban_kesim_durum',
                 
                 
 	),
 )); ?>
+
+<div class="login-callout">
+    <div class="login-callout-btns">
+        <?php if(( isset($email) == 1) && ( empty($email) != 1)) { ?>
+        <a class="big-button-blue" href="<?php  echo Yii::app()->createUrl('site/kesimyap',array('id'=>$id,'tip'=>'mail')) ?>">
+                    <img class="sms_mail" src="<?php echo Yii::app()->getBaseUrl(true)."/img/email-sms.png"?>" /> <br>
+            <span class="button-subtitle">  Mail ve SMS Gönder »  </span>
+        </a>
+        <?php } ?>
+        &nbsp; &nbsp;
+        <?php if(( isset($telefon) == 1) && ( empty($telefon) != 1)) { ?>
+         <a class="big-button-green" href="<?php echo Yii::app()->createUrl('site/kesimyap',array('id'=>$id,'tip'=>'sms')); ?>">
+                    <img class="sms_mail" src="<?php echo Yii::app()->getBaseUrl(true)."/img/sms.gif"?>" /> <br>
+            <span class="button-subtitle"> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;SMS Gönder » &nbsp; &nbsp; &nbsp;&nbsp;</span>
+        </a>
+        <?php } ?>
+    </div>
+</div>

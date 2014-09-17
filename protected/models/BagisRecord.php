@@ -13,8 +13,6 @@
  * @author LifeBook
  */
 class BagisRecord extends CActiveRecord {
-    //put your code here
-    
     
     public $toplamBagis;
     public $aylikBursToplamBagis;
@@ -72,4 +70,5 @@ class BagisRecord extends CActiveRecord {
             );
         }
     
+        
 }
