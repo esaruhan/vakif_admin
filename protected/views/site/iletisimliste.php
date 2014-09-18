@@ -22,6 +22,7 @@
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
+                                                                  <th>Durum</th>
 								  <th>Ad-Soyad</th>
                                                                   <th>Konu</th>
                                                                   <th>Mail</th>
@@ -93,6 +94,11 @@
                                                                 <td class="center">
                                                                     <span class="label <?php echo $cevap_durum_label['label'];  ?>">
                                                                         <?php echo $cevap_durum_label['durum'];  ?>
+                                                                    </span>
+                                                                </td>
+                                                                <td class="center">
+                                                                    <span class="label <?php echo $label['label'];  ?>">
+                                                                        <a href="<?php echo Yii::app()->createUrl('site/oku')?>/<?php echo $id ?>" ><?php echo $label['durum'];  ?></a>
                                                                     </span>
                                                                 </td>
                                                                 <td class="center">
