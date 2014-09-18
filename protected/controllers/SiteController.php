@@ -114,8 +114,11 @@ class SiteController extends Controller
             
             $model = $this->loadContact($id);
 
-            $model->okundu = 1;
-            $model->save();
+            if( $model->okundu == 2) {
+                $model->okundu = 1;
+                $model->okuyan_admin_id = Yii::app()->user->id;
+                $model->save();
+            }
             
             $this->render('oku',array(
 			'model'=>$model,
@@ -304,11 +307,21 @@ class SiteController extends Controller
                      $mail->setFrom('info@suleymaniyevakfi.com.tr', 'Süleymaniye Vakfı');
                      $mail->setTo($model->mail);
                      $mail->setSubject('Vakfa ilettiğiniz Mesaj');
+                     
                      if ($mail->send()) {
+                        
+                        $model->cevap_durum = 1;
+                        $model->cevap_veren_admin_id = Yii::app()->user->id;
+                        $model->cevap_mesaj = $message;
+                        $model->cevap_tarih = date('Y-m-d H:i:s');
+                        $model->save();
+                        
                         Yii::app()->user->setFlash('contact','Mail başarıyla gönderilmiştir');
+                        
                      } else {
                         Yii::app()->user->setFlash('error','Mail gönderilememiştir. Bir hata oluştu.');
                      }
+                     
                 } else  {
                    Yii::app()->user->setFlash('error','Mesaj içeriği boş olamaz.');
                 }     

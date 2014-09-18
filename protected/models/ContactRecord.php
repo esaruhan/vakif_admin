@@ -32,9 +32,10 @@ class ContactRecord  extends CActiveRecord {
                     'mail' => 'Email',
                     'tarih'=>'Mesaj Atıldığı Tarih',
                     'konu' => 'Konu',
-                    'mesaj' => 'Mesaj',
+                    'mesaj' => 'Gelen Mesaj',
                     'okundu'=>'Okundu Bilgisi',
                     'telefon'=>'Telefon',
+                    'cevap_mesaj'=>'Gönderilen Cevap',
             );
     }
     

@@ -101,6 +101,18 @@ class Data {
         }
     }
     
+    public static function getCevapDurum($durum){
+        
+        if($durum==1){
+            return array ("label" => "label-success" , "durum"=>"CEVAPLANDI");
+        } else if($durum ==2 ){
+            return array ("label" => "label-important" , "durum"=>"CEVAPLANACAK");
+        } else {
+            return array ("label" => "label-important" , "durum"=>"CEVAPLANACAK");
+     
+        }
+    }
+    
     public static function getMesajDurum($durum){
         
         if($durum==1){

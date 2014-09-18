@@ -186,7 +186,26 @@ Class StasticCounts {
             $user = $record->count($criteria);
             return $user;        
         }
-        
+          /*
+          * Cevaplanmamışların sayısını alıyoruz
+          */
+         public static function getToplamVakifIletisimGecenlerCevaplanmayanlar(){
+            $record = new ContactRecord();
+            $criteria = new CDbCriteria;     
+            $criteria->condition    = " cevap_durum = 2";
+            $user = $record->count($criteria);
+            return $user;        
+        }
+         /*
+          * Bugün Gelen Cevaplanmamışların sayısını alıyoruz
+          */
+         public static function getBugunVakifIletisimGecenlerCevaplanmayanlar(){
+            $record = new ContactRecord();
+            $criteria = new CDbCriteria;     
+            $criteria->condition    = " DATE(tarih) = DATE(NOW()) AND cevap_durum = 2";
+            $user = $record->count($criteria);
+            return $user;        
+        }
           /*
           * Yurtdışı kurban sayısı
           */

@@ -26,6 +26,8 @@ $this->breadcrumbs=array(
     <form class="form-horizontal" method="post" action="<?php echo Yii::app()->createUrl('site/iletisimmailnonder',array('id'=>$model->id)); ?>" enctype="multipart/form-data">
       <fieldset>
             <legend>Mail Gönderme</legend>
+            <p> <b>Not :</b> Lütfen mesaj içeriğine kişinin ismini <b><u>yazmayın.</u></b>. Otomatik olarak eklenecektir.</p>
+            <br><br>
             <div class="control-group">
               
                   <textarea  name = "message" id="textarea" rows="6" cols="55" ></textarea>
